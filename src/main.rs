@@ -1,3 +1,5 @@
+mod defaultStructs;
+
 use std::env;
 
 fn main() {
