@@ -1,4 +1,4 @@
 pub mod initializeRoot;
-mod checkPotentialRoot;
-mod readInfo;
-mod reqSender;
+pub mod checkPotentialRoot;
+pub mod readInfo;
+pub mod reqSender;
