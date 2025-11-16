@@ -1,6 +1,7 @@
 use crate::projectInfo::initializeRoot;
 use crate::projectInfo::initializeRoot::{initializeRoot, initializeRootWithCheck, initializeRootNoCheck};
 use crate::projectInfo::readInfo;
+use crate::defaultStructs;
 
 pub fn getCommand(args_list: Vec<String>) {
     //println!("{:?}", args_list);
@@ -31,7 +32,8 @@ pub fn getCommand(args_list: Vec<String>) {
                 continue;
             }
 
-            readInfo::findExactLib(i);
+            let package : defaultStructs::shortPkgInfo = readInfo::findExactLib(i);
+            println!("{} => {}", package.name, package.version);
         }
     }
 
