@@ -14,8 +14,8 @@ pub fn findExactLib(search: String) -> shortPkgInfo {
         name: search.clone() + " - not found", // ah, forgot that it can be moved from here
         version: String::from("undefined"),
     };
-    let read_file = fs::read_to_string("./info-cforge.totmb").unwrap();
 
+    let read_file = fs::read_to_string("./info-cforge.totmb").unwrap();
     let mut lines = read_file.lines();
 
     for curr_str in lines {
