@@ -23,11 +23,12 @@ pub fn getCommand(args_list: Vec<String>) {
         readInfo::readProjInfo();
     }
 
-    if args_list.get(1).unwrap().as_str() == "fetch-libs-info".to_string() {
+    if args_list.get(1).unwrap().as_str() == "installed-libs-info".to_string() {
         opt_recognized = true;
         let mut skip_first = 0; // I know that it is just a stupid cork, but let it be...
+        let args_list_clone = args_list.clone();
 
-        for i in args_list {
+        for i in args_list_clone {
             if skip_first < 2 {
                 skip_first += 1;
                 continue;
@@ -37,6 +38,11 @@ pub fn getCommand(args_list: Vec<String>) {
 
             println!("{} => {}", package.name, package.version);
         }
+    }
+
+    if args_list.get(1).unwrap().as_str() == "fetch-data".to_string() {
+        opt_recognized = true;
+        let test = crate::projectInfo::reqSender::getPackageInfo(args_list.get(2).unwrap().to_string());
     }
 
     if !opt_recognized {
