@@ -34,7 +34,7 @@ pub fn getCommand(args_list: Vec<String>) {
                 continue;
             }
 
-            let package : defaultStructs::shortPkgInfo = readInfo::findExactLib(i);
+            let package : defaultStructs::ShortPkgInfo = readInfo::findExactLib(i);
 
             println!("{} => {}", package.name, package.version);
         }
@@ -43,6 +43,18 @@ pub fn getCommand(args_list: Vec<String>) {
     if args_list.get(1).unwrap().as_str() == "fetch-data".to_string() {
         opt_recognized = true;
         let test = crate::projectInfo::reqSender::getPackageInfo(args_list.get(2).unwrap().to_string());
+    }
+
+    if (args_list.get(1).unwrap().as_str() == "get".to_string()) {
+        opt_recognized = true;
+        let downloader = crate::projectInfo::reqSender::downloadPackage(args_list.get(2).unwrap().to_string());
+
+    }
+
+    if (args_list.get(1).unwrap().as_str() == "check-existence".to_string()) {
+        opt_recognized = true;
+        let check_existence = crate::projectInfo::reqSender::packageExistenceChecker(args_list.get(2).unwrap().to_string());
+        println!("Existence check status: {}", check_existence);
     }
 
     if !opt_recognized {

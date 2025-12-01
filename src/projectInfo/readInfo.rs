@@ -1,6 +1,6 @@
 use std::fs;
 use std::io::Read;
-use crate::defaultStructs::shortPkgInfo;
+use crate::defaultStructs::ShortPkgInfo;
 
 pub fn readProjInfo() {
     if fs::exists("./info-cforge.totmb").unwrap() {
@@ -9,8 +9,8 @@ pub fn readProjInfo() {
     }
 }
 
-pub fn findExactLib(search: String) -> shortPkgInfo {
-    let mut test = shortPkgInfo{
+pub fn findExactLib(search: String) -> ShortPkgInfo {
+    let mut test = ShortPkgInfo{
         name: search.clone() + " - not found", // ah, forgot that it can be moved from here
         version: String::from("undefined"),
     };

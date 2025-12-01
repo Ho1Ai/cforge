@@ -4,17 +4,32 @@ CForge is a small application for C/C++ libraries
 
 ## User guide
 
-Check if the library exists  
+Check if the library exists (on the server, not on your computer)  
 ```aiignore
-#not ready yet
+cforge check-existence <lib_name>
+```
+
+Check short package info  
+```aiignore
+cforge fetch-data <lib_name>
 ```
 
 Install a library  
 ```aiignore
-# not ready yet...
+cforge get <lib_name>
 ```
 
 Remove a library  
+```aiignore
+# not ready yet
+```
+
+Output installed libraries information  
+```aiignore
+cforge libs-list
+```
+
+Output manual for library   
 ```aiignore
 # not ready yet
 ```
