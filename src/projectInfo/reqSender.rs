@@ -64,7 +64,8 @@ pub fn downloadPackage (pkg_name: String)  {
                 let mut archive = Archive::new(archive_file);
 
                 let extr_test = archive.unpack(pkg_with_path__lib);
-                println!("{:?}", extr_test.is_ok());
+                //println!("{:?}", extr_test.is_ok());
+                println!("Installed")
             } else {
                 println!("An error occured while downloading a library.");
             }

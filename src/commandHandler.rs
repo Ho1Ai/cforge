@@ -58,8 +58,11 @@ pub fn getCommand(args_list: Vec<String>) {
 
     if (args_list.get(1).unwrap().as_str() == "get".to_string()) {
         opt_recognized = true;
-        let downloader = crate::projectInfo::reqSender::downloadPackage(args_list.get(2).unwrap().to_string());
-
+        if args_list.len() < 3 {
+            println!("Too few arguments for `cforge get`");
+        } else {
+            let downloader = crate::projectInfo::reqSender::downloadPackage(args_list.get(2).unwrap().to_string());
+        }
     }
 
     if (args_list.get(1).unwrap().as_str() == "check-existence".to_string()) {
