@@ -34,6 +34,11 @@ Output manual for library
 # not ready yet
 ```
 
+Check CForge version  
+```aiignore
+cforge cforge-version-check
+```
+
 Full user guide can be found on project website: [check full user guide]()
 
 ## Installation Guide

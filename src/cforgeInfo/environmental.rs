@@ -1,0 +1,1 @@
+pub const VERSION: &str = "00001p. Prototype version";

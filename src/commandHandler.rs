@@ -3,10 +3,21 @@ use crate::projectInfo::initializeRoot::{initializeRoot, initializeRootWithCheck
 use crate::projectInfo::readInfo;
 use crate::defaultStructs;
 
+use crate::cforgeInfo::environmental;
+
 pub fn getCommand(args_list: Vec<String>) {
     //println!("{:?}", args_list);
     //println!("{:?}", args_list[1]);
     let mut opt_recognized = false;
+    if args_list.len() < 2 {
+        println!("Couldn't get any content for args_list");
+        return
+    }
+
+    if args_list.get(1).unwrap().as_str() == "cforge-version-check".to_string() {
+        opt_recognized = true;
+        println!("{}", environmental::VERSION);
+    }
 
     if args_list.get(1).unwrap().as_str() == "init".to_string() {
         opt_recognized = true;
@@ -58,6 +69,6 @@ pub fn getCommand(args_list: Vec<String>) {
     }
 
     if !opt_recognized {
-        println!("Unrecognized option.");
+        println!("Unrecognized option. Write `cforge help` in order to get some info");
     }
 }

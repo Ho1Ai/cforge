@@ -1,6 +1,7 @@
 mod defaultStructs;
 mod projectInfo;
 mod commandHandler;
+mod cforgeInfo;
 
 use std::env;
 
