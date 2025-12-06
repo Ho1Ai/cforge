@@ -71,6 +71,18 @@ pub fn getCommand(args_list: Vec<String>) {
         println!("Existence check status: {}", check_existence);
     }
 
+    if (args_list.get(1).unwrap().as_str() == "help".to_string()) {
+        opt_recognized = true;
+        println!("Available commands:
+
+        cforge get <pkg_name> - get library. Saves libraries to lib/ directory
+        cforge fetch-data <pkg_name> - get some information about a library
+        cforge installed-libs-info <pkg_name> - check library info (at the moment only name and version)
+        cforge libs-list - check info about libraries from info-cforge.totmb
+        cforge finit - initialize root in not empty directory
+        cforge init - initialize root in an empty directory");
+    }
+
     if !opt_recognized {
         println!("Unrecognized option. Write `cforge help` in order to get some info");
     }

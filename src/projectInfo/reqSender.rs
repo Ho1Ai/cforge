@@ -7,6 +7,7 @@ use flate2::read::GzDecoder;
 use crate::defaultStructs::PkgDataResponse;
 use crate::projectInfo::checkPotentialRoot::checkRootExistence;
 use crate::defaultStructs;
+use crate::projectInfo::writePkgInfo;
 
 // data list is needed to take dependencies and other packages and to make final set of packages, which will be downloaded
 // so this stuff is really necessary
@@ -20,7 +21,7 @@ pub fn getPackageInfo (pkg_name: String) /*-> defaultStructs::PackageEntity*//* 
     if data_fetch_result.is_ok() { // replace .unwrap()!!!!
         let mut request_result = data_fetch_result.ok().unwrap().json::<PkgDataResponse>().unwrap();
 
-        println!("for package `{}`:\nexistence:{}\nactual version:{}", pkg_name, request_result.existence, request_result.version);
+        println!("for package `{}`:\nexistence: {}\nactual version: {}", pkg_name, request_result.existence, request_result.version);
     } else {
         println!("Got an error while getting data. \nTry to check internet connection. If it doesn't help, maybe the server is down.");
     }
@@ -39,7 +40,9 @@ pub fn downloadPackage (pkg_name: String)  {
                 .send();
 
             if data_fetch_result.is_ok() {
-                let mut request_result = data_fetch_result.ok().unwrap().bytes().unwrap();
+                let response = data_fetch_result.ok().unwrap();
+                let mut headers = response.headers().clone();
+                let mut request_result = response.bytes().unwrap();
 
                 let mut pkg_with_path__tmp = "./tmp/".to_string();
                 pkg_with_path__tmp.push_str(pkg_name.as_str());
@@ -65,6 +68,9 @@ pub fn downloadPackage (pkg_name: String)  {
 
                 let extr_test = archive.unpack(pkg_with_path__lib);
                 //println!("{:?}", extr_test.is_ok());
+
+                let test_writer = writePkgInfo::writePkgVersion(pkg_name.as_str(), headers.get("App-Pkg-Version").unwrap().to_str().unwrap());
+
                 println!("Installed")
             } else {
                 println!("An error occured while downloading a library.");

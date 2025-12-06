@@ -31,7 +31,7 @@ cforge libs-list
 
 Output manual for library   
 ```aiignore
-# not ready yet
+cforge help
 ```
 
 Check CForge version  
