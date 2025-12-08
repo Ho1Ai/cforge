@@ -2,5 +2,5 @@ pub mod initializeRoot;
 pub mod checkPotentialRoot;
 pub mod readInfo;
 pub mod reqSender;
-mod writePkgInfo;
-mod packageRemover;
+pub mod writePkgInfo;
+pub mod packageRemover;

@@ -71,6 +71,15 @@ pub fn getCommand(args_list: Vec<String>) {
         println!("Existence check status: {}", check_existence);
     }
 
+    if (args_list.get(1).unwrap().as_str() == "remove".to_string()) {
+        opt_recognized = true;
+        if args_list.len() <2 {
+            println!("Too few arguments for `cforge remove`");
+        } else {
+            let result = crate::projectInfo::packageRemover::removePackage(args_list.get(2).unwrap());
+        }
+    }
+
     if (args_list.get(1).unwrap().as_str() == "help".to_string()) {
         opt_recognized = true;
         println!("Available commands:

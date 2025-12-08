@@ -21,7 +21,7 @@ cforge get <lib_name>
 
 Remove a library  
 ```aiignore
-# not ready yet
+cforge remove <pkg_name>
 ```
 
 Output installed libraries information  
